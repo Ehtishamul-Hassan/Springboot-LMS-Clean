@@ -29,7 +29,7 @@ instances = {
 
   automationHost = {
     az            = "ap-south-1a"
-    tag           = "1a"
+    tag           = "fargate-private-subnet-1"
     name          = "eks-automation-host"
     instance_type = "t2.micro"
     extra_tags = {

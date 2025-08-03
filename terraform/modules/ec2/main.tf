@@ -10,6 +10,7 @@ data "aws_subnets" "selected" {
     values = [data.aws_vpc.eks.id]
   }
 
+
   filter {
     name   = "tag:Name"
     values = [var.subnet_tag]
