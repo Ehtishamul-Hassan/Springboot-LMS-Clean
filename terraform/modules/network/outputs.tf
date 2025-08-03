@@ -5,3 +5,8 @@ output "private_subnet_ids" {
 output "fargate_sg_id" {
   value = aws_security_group.fargate_sg.id
 }
+
+output "vpc_id" {
+  value = aws_vpc.this.id
+}
+

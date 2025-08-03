@@ -10,6 +10,12 @@ variable "name" {
   type = string
 }
 
+variable "eks_vpc_id" {
+  description = "VPC ID to fetch subnet for EC2"
+  type        = string
+}
+
+
 variable "subnet_tag" {
   type = string
 }

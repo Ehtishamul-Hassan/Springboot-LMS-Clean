@@ -29,6 +29,7 @@ module "ec2_instances" {
   security_group_id = module.fargate_network.fargate_sg_id
   key_name          = var.key_name
   extra_tags        = each.value.extra_tags
+  eks_vpc_id        = module.fargate_network.vpc_id
 }
 
 ###################
