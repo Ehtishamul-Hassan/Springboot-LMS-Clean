@@ -59,15 +59,15 @@
 - name: Download eksctl archive
   get_url:
     url: "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz"
-    dest: "/tmp/eksctl.tar.gz"
+    dest: "/home/ec2-user/eksctl.tar.gz"
     mode: '0644'
 
 - name: Extract eksctl
   unarchive:
-    src: "/tmp/eksctl.tar.gz"
-    dest: "/tmp/"
+    src: "/home/ec2-user/eksctl.tar.gz"
+    dest: "/home/ec2-user/"
     remote_src: yes
 
-- name: Move eksctl to /usr/local/bin
+- name: Move eksctl to /home/ec2-user/
   command: install -m 0755 /tmp/eksctl /usr/local/bin/eksctl
 
