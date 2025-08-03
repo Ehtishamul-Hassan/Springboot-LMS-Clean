@@ -13,3 +13,8 @@ variable "fargate_pod_role_arn" {
 variable "subnet_ids" {
   type = list(string)
 }
+
+variable "fargate_sg_id" {
+  type        = string
+  description = "Security Group ID for Fargate profile"
+}
