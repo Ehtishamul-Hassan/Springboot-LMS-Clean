@@ -69,5 +69,5 @@
     remote_src: yes
 
 - name: Move eksctl to /home/ec2-user/
-  command: install -m 0755 /tmp/eksctl /usr/local/bin/eksctl
+  command: install -m 0755 /home/ec2-user/eksctl /usr/local/bin/eksctl
 
