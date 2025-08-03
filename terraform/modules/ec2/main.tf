@@ -1,15 +1,13 @@
-# EKS VPC passed from root module
-data "aws_vpc" "eks" {
-  id = var.eks_vpc_id
+# Get subnet using tag passed from root
+data "aws_vpc" "default" {
+  default = true
 }
 
-# Get subnets from EKS VPC
 data "aws_subnets" "selected" {
   filter {
     name   = "vpc-id"
-    values = [data.aws_vpc.eks.id]
+    values = [data.aws_vpc.default.id]
   }
-
 
   filter {
     name   = "tag:Name"
@@ -17,16 +15,18 @@ data "aws_subnets" "selected" {
   }
 }
 
-
-
+data "aws_subnet" "selected" {
+  id = data.aws_subnets.selected.ids[0]
+}
 
 resource "aws_instance" "this" {
   ami                         = var.ami
   instance_type               = var.instance_type
-  subnet_id                   = data.aws_subnets.selected.ids[0]
+  subnet_id                   = data.aws_subnet.selected.id
   vpc_security_group_ids      = [var.security_group_id]
   associate_public_ip_address = true
   key_name                    = var.key_name
+
 
   user_data = <<EOF
 #!/bin/bash
@@ -36,9 +36,12 @@ chown -R ec2-user:ec2-user /home/ec2-user/.ssh
 chmod 600 /home/ec2-user/.ssh/authorized_keys
 EOF
 
+
+
   tags = merge({
     "Name" = var.extra_tags["Name"]
   }, var.extra_tags)
+
 
   root_block_device {
     volume_size = 15
