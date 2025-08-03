@@ -12,6 +12,15 @@ resource "aws_eks_cluster" "this" {
   }
 }
 
+variable "subnet_ids" {
+  type = list(string)
+}
+
+variable "fargate_sg_id" {
+  type = string
+}
+
+
 resource "aws_eks_fargate_profile" "default" {
   cluster_name           = aws_eks_cluster.this.name
   fargate_profile_name   = "${var.cluster_name}-fp"
