@@ -70,9 +70,6 @@
     executable: /bin/bash
 
 
-- name: Move eksctl to /usr/local/bin
-  command: install -m 0755 {{ eksctl_extract_dir }}/eksctl /usr/local/bin/eksctl
-
 - name: Verify eksctl version
   command: eksctl version
   register: eksctl_version
