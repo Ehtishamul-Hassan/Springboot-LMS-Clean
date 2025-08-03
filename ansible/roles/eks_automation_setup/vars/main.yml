@@ -1,0 +1,12 @@
+awscli_url: "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+kubectl_url: "https://s3.us-west-2.amazonaws.com/amazon-eks/1.29.0/2025-05-01/bin/linux/amd64/kubectl"
+eksctl_url: "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz"
+
+kubectl_path: "/usr/local/bin/kubectl"
+awscli_zip_path: "/tmp/awscliv2.zip"
+awscli_extract_path: "/tmp/aws"
+eksctl_tar_path: "/tmp/eksctl.tar.gz"
+eksctl_extract_dir: "/tmp"
+
+automation_user: "automation-host"
+automation_group: "automation-host"
