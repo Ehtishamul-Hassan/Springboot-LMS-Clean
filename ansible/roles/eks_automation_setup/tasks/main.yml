@@ -56,24 +56,18 @@
     mode: '0755'
     remote_src: yes
 
-- name: Download eksctl binary tar
+- name: Download eksctl archive
   get_url:
-    url: "{{ eksctl_url }}"
-    dest: "/tmp/eksctl_{{ platform }}.tar.gz"
+    url: "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz"
+    dest: "/tmp/eksctl.tar.gz"
+    mode: '0644'
 
-- name: Extract and install eksctl binary
-  shell: |
-    tar -xzf /tmp/eksctl_{{ platform }}.tar.gz -C /tmp
-    install -m 0755 /tmp/eksctl /usr/local/bin/eksctl
-    rm -f /tmp/eksctl /tmp/eksctl_{{ platform }}.tar.gz
-  args:
-    executable: /bin/bash
+- name: Extract eksctl
+  unarchive:
+    src: "/tmp/eksctl.tar.gz"
+    dest: "/tmp/"
+    remote_src: yes
 
+- name: Move eksctl to /usr/local/bin
+  command: install -m 0755 /tmp/eksctl /usr/local/bin/eksctl
 
-- name: Verify eksctl version
-  command: eksctl version
-  register: eksctl_version
-  changed_when: false
-
-- debug:
-    msg: "Installed eksctl version: "
