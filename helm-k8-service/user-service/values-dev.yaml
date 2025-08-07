@@ -1,4 +1,4 @@
-namespace: user-service-dev
+namespace: default
 
 app:
   name: user-service
