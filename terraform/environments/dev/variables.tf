@@ -31,8 +31,8 @@ variable "enable_ec2" {
 }
 
 variable "vpc_cidr" {}
-variable "name" {}
-variable "cluster_name" {}
+# variable "name" {}
+# variable "cluster_name" {}
 variable "availability_zones" {
   type = list(string)
 }
