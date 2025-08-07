@@ -23,3 +23,11 @@ variable "cluster_name" {
   description = "EKS Cluster name for tagging"
   type        = string
 }
+
+
+
+variable "public_subnet_cidrs" {
+  description = "List of CIDR blocks for public subnets"
+  type        = list(string)
+}
+

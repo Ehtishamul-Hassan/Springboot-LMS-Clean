@@ -29,3 +29,16 @@ variable "enable_ec2" {
   type    = bool
   default = true
 }
+
+variable "vpc_cidr" {}
+variable "name" {}
+variable "cluster_name" {}
+variable "availability_zones" {
+  type = list(string)
+}
+variable "public_subnet_cidrs" {
+  type = list(string)
+}
+variable "private_subnet_cidrs" {
+  type = list(string)
+}
