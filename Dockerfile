@@ -11,5 +11,7 @@ COPY app.jar app.jar
 
 EXPOSE 8080
 
-CMD ["java" , "-jar", "app.jar"]
+# CMD ["java" , "-jar", "app.jar"]
+ENTRYPOINT ["sh", "-c", "java -Dspring.datasource.url=$DB_URL -Dspring.datasource.username=$DB_USER -Dspring.datasource.password=$DB_PASS -Dspring.datasource.driver-class-name=$DB_DRIVER -jar app.jar"]
+
 
