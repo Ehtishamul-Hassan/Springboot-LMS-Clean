@@ -78,6 +78,7 @@ module "rds" {
   rds_sg_id          = module.fargate_network.rds_sg_id
   db_username        = "root"
   db_password        = "12345678"
+  db_name            = "securelibrarymanagementsystem"
 }
 
 
