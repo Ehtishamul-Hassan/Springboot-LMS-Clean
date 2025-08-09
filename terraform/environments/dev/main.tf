@@ -71,3 +71,13 @@ module "eks" {
   fargate_sg_id        = module.fargate_network.fargate_sg_id
 }
 
+module "rds" {
+  source             = "../../modules/rds"
+  name               = "fargate"
+  private_subnet_ids = module.fargate_network.private_subnet_ids
+  rds_sg_id          = module.fargate_network.rds_sg_id
+  db_username        = "root"
+  db_password        = "12345678"
+}
+
+
